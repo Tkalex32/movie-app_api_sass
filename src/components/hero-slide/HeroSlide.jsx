@@ -1,17 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
-import SwipeCore, { Autoplay } from "swiper";
+import SwipeCore, {
+  Autoplay,
+  Navigation,
+  Pagination,
+  Controller,
+} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Button, { OutlineButton } from "../button/Button";
 import Modal, { ModalContent } from "../modal/Modal";
 import tmdbApi, { category, movieType } from "../../api/tmdbApi";
 import apiConfig from "../../api/apiConfig";
-import "./hero-slide.scss";
 import { useHistory } from "react-router";
+import "swiper/swiper-bundle.css";
+import "./hero-slide.scss";
 
 const HeroSlide = () => {
   const [movieItems, setMovieItems] = useState([]);
 
-  SwipeCore.use([Autoplay]);
+  SwipeCore.use([Autoplay, Navigation, Pagination, Controller]);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -36,6 +42,11 @@ const HeroSlide = () => {
         grabCursor={true}
         spaceBetween={0}
         slidesPerView={1}
+        navigation
+        pagination={{
+          type: "bullets",
+          clickable: true,
+        }}
         autoplay={{ delay: 4000 }}
       >
         {movieItems.map((item, i) => (

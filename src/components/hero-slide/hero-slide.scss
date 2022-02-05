@@ -3,6 +3,30 @@
     margin-bottom: 3rem;
 }
 
+.swiper-pagination {
+    &>.swiper-pagination-bullet {
+        width: 0.7em;
+        height: 0.7em;
+        opacity: 1;
+        background-color: rgb(105, 105, 105);
+        border-radius: 0.7em;
+    }
+    &>.swiper-pagination-bullet-active {
+        width: 2em;
+        height: 0.7em;
+        background-color: $main-color;
+    }
+}
+
+.swiper-container {
+    &>.swiper-button-prev {
+        color: $main-color;
+    }
+    &>.swiper-button-next {
+        color: $main-color;
+    }
+}
+
 .hero-slide__item {
     padding: 9rem 0;
     width: 100%;
@@ -32,8 +56,9 @@
         @include flex(center, center);
         position: relative;
         &__info {
+            z-index: 9;
             width: 55%;
-            padding: 0 3rem;
+            padding: 0 5rem;
             position: relative;
             @include tablet {
                 width: 100%;
@@ -65,7 +90,7 @@
         }
         &__poster {
             flex: 1;
-            @include flex(center, flex-start);
+            @include flex(center, space-around);
             position: relative;
             img {
                 width: 400px;
