@@ -12,7 +12,7 @@ const MovieCard = ({ item, category }) => {
     <Link to={link}>
       <div className="movie-card" style={{ backgroundImage: `url(${bg})` }}>
         <Button>
-          <i className="bx bx-play"></i>
+          <i className="bx bx-play bx-md"></i>
         </Button>
       </div>
       <h3>{item.title || item.name}</h3>
