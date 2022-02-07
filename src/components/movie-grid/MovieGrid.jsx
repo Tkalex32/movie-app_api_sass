@@ -68,7 +68,7 @@ const MovieGrid = ({ category }) => {
   return (
     <>
       <div className="section mb-3">
-        <MovieSearch category={category} keyword={keyword} />
+        <MovieSearch categoryProp={category} keywordProp={keyword} />
       </div>
       <div className="movie-grid">
         {items.map((item, i) => (
@@ -86,15 +86,15 @@ const MovieGrid = ({ category }) => {
   );
 };
 
-const MovieSearch = (props) => {
+const MovieSearch = ({ categoryProp, keywordProp }) => {
   const history = useHistory();
-  const [keyword, setKeyword] = useState(props.keyword ? props.keyword : "");
+  const [keyword, setKeyword] = useState(keywordProp ? keywordProp : "");
 
   const goToSearch = useCallback(() => {
     if (keyword.trim().length > 0) {
-      history.push(`/${cat[props.category]}/search/${keyword}`);
+      history.push(`/${cat[categoryProp]}/search/${keyword}`);
     }
-  }, [keyword, props.category, history]);
+  }, [keyword, categoryProp, history]);
 
   useEffect(() => {
     const enterEvent = (e) => {
