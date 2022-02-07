@@ -6,11 +6,18 @@ import apiConfig from "../../api/apiConfig";
 
 const MovieCard = ({ item, category }) => {
   const link = `/${category}/${item.id}`;
-  const bg = apiConfig.w500Image(item.poster_path || item.backdrop_path);
+  const imagePresent = item.poster_path || item.backdrop_path;
+  const bg = imagePresent
+    ? apiConfig.w500Image(item.poster_path || item.backdrop_path)
+    : apiConfig.noImage;
+  const bgColor = imagePresent ? null : "#dbdbdb";
 
   return (
     <Link to={link}>
-      <div className="movie-card" style={{ backgroundImage: `url(${bg})` }}>
+      <div
+        className="movie-card"
+        style={{ backgroundImage: `url(${bg}`, backgroundColor: `${bgColor}` }}
+      >
         <Button>
           <i className="bx bx-play bx-md"></i>
         </Button>
