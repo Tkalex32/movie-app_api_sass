@@ -63,7 +63,6 @@ const MovieGrid = ({ category }) => {
     setItems([...items, ...response.results]);
     setPage(page + 1);
   };
-  console.log(items);
 
   return (
     <>
